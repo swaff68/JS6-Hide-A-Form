@@ -8,7 +8,7 @@ $('button').click(function(){
 	$('button').hide()
 });
 
-$('#submit').click(function(x) {
+$('#editForm').submit(function(x) {
 	$el = $(this);
 	x.preventDefault()
 	// console.log($el)
@@ -19,17 +19,29 @@ $('#submit').click(function(x) {
 	var input = $('#bioInput').val()
 	$('#bio').text(input)
 
-	var input = $('#bookInput').val()
-	$('#favBooks').text(input)
+	$('#favBooks').empty();
+	var bookString = $('#bookInput').val();
+	var bookArray = bookString.split(', ');
+		for (var i=0; i<bookArray.length; i++){
+		$('#favBooks').append('<li>' + bookArray[i] + '</li>');
+	}
 
-	var input = $('#jslInput').val()
-	$('#favLibs').text(input)
+	$('#favLibs').empty();
+	var libsString = $('#jslInput').val();
+	var libsArray = libsString.split(', ');
+		for (var i=0; i<libsArray.length; i++){
+		$('#favLibs').append('<li>' + libsArray[i] + '</li>');
+	}
+
+
+
 
 	$('form').hide()
 	$('button').show()
 
 
 	});
+	
 
   
 });
